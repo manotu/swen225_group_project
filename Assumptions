@@ -1,1 +1,2 @@
 1) When a player loses, put them in a cellar so graphically, we can still see who has lost.
+￼2) If there are multiple player moves, e.g. 12, each individual movement is checked by system.in
