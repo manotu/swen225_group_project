@@ -1,6 +1,6 @@
 Actions:
-- game randomly selects 3 cards for envelope.
-- game randomly deals cards clockwise to all players 
+- game (randomly selects 3 cards for envelope)
+- game (randomly deals cards clockwise to all players)
 - move (move the players on board)
 - rules (ask how many players 3-6)
 - rules (each turn (roll 2 dice then move, then make accusation or suggestion (if in room) or end turn))
