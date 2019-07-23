@@ -1,0 +1,26 @@
+Actions:
+- game randomly selects 3 cards for envelope.
+- game randomly deals cards clockwise to all players 
+- move (move the players on board)
+- rules (ask how many players 3-6)
+- rules (each turn (roll 2 dice then move, then make accusation or suggestion (if in room) or end turn))
+- lost (player can lose)
+- gameover (an accusation matches envelope)
+- rules (cannot duiagonally move, cannot move to same space again)
+- rules (entering a room, can choose to stop moving)
+- rules (if the player not in a room and the player in about to move into the entrace, they have option to use remaining moves)
+- suggestion (after a suggestion, related players and weapon are moved into room)
+- suggestion (after suggestion, each player sequentially has chance to refute suggestion by giving a matching card in suggestion from their cards, terminates after first matching card)
+- accusation (character, weapon, room - if matching envelope, player wins & gameover otherwise, player loses & put in cellar, they can still refute)
+
+Things:
+- players (3-6)
+- board (for the players 
+- rooms (9 on the board)
+- murderer circumstances (murderer, weapon, room)
+- cellar (inaccessible to players in middle of board)
+- squares (24x25 that make up board, 6 starting squares)
+- characters (6) 
+- Weapons (6, belong to a room)
+- dice (2)
+- cards (21, can be weapon, player, or room).
