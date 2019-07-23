@@ -1,26 +1,27 @@
 Actions:
-- game (randomly selects 3 cards for envelope)
-- game (randomly deals cards clockwise to all players)
-- move (move the players on board)
-- rules (ask how many players 3-6)
-- rules (each turn (roll 2 dice then move, then make accusation or suggestion (if in room) or end turn))
-- lost (player can lose)
-- gameover (an accusation matches envelope)
-- rules (cannot duiagonally move, cannot move to same space again)
-- rules (entering a room, can choose to stop moving)
-- rules (if the player not in a room and the player in about to move into the entrace, they have option to use remaining moves)
-- suggestion (after a suggestion, related players and weapon are moved into room)
-- suggestion (after suggestion, each player sequentially has chance to refute suggestion by giving a matching card in suggestion from their cards, terminates after first matching card)
-- accusation (character, weapon, room - if matching envelope, player wins & gameover otherwise, player loses & put in cellar, they can still refute)
+- determineNumPlayers (Game asks how many players 3-6)
+- makeEnvelope (Game creates Triple for envelope)
+- dealCards (Game randomly deals Cards clockwise to all Board's Players)
+- rollDice (Player rolls 2 dice, return sum of dice)
+- move (player moves on Board, can't move diagonally, can't move same space, can't move to occupied space)
+- turn (Board's Player rollDice, Moves, then makeAccusation (if matching envelope, player wins & gameover otherwise, player loses & put in cellar, they can still refute) or makeSuggestion (if in room, return refuted) or endTurn))
+- lost (Player's makeAccusation is false)
+- gameover (Game's Board has Player accusation that matches envelope or everyone's in the cellar)
+- enterRoom (Player enters a Room, can choose to stop moving)
+- makeSuggestion (Player makes suggestion Triple, board relocate(Triple{Character, Weapon} to Triple{Room}))
+- refuted (Board's Players (except current Player) gives a card that matches {character, weapon, room}, else give no card)
+- makeAccusation (Player makes accusation Triple)
+- relocate (Board moves weapon and Player{Character}).
 
 Things:
-- players (3-6)
-- board (for the players 
-- rooms (9 on the board)
+- Players (3-6 on the Board)
+- Board (24x25 of Squares)
+- Rooms (9 rooms on the Board)
 - murderer circumstances (murderer, weapon, room)
 - cellar (inaccessible to players in middle of board)
 - squares (24x25 that make up board, 6 starting squares)
-- characters (6) 
-- Weapons (6, belong to a room)
-- dice (2)
-- cards (21, can be weapon, player, or room).
+- Characters (6 character Cards)
+- Weapons (6 placed on Board, initially 1 to each Room on startup)
+- Cards (An individual (Character, Weapon, Room)).
+- Triple (A set of {Character, Weapon, Room}).
+- Prop (Character token, or Weapon token)
