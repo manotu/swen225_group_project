@@ -1,0 +1,107 @@
+You are to implement a prototype of program allowing people to play a version of the board game
+Cluedo on a desktop computer. If you have not heard of the game Cluedo before, don’t worry, a
+specification detailing what you need to do is provided and you may always consult the game manual
+or the Wikipedia description of Cluedo.
+You will design a solution using CRC cards and UML, and implement a solution using Java. Feel free
+to use the Umple tool for designing models and generating code. You may fully stay within Umple,
+or depart from the original Umple ethos of never editing the generated code by instead using the
+generated code as a starting point for your implementation.
+Hint: If letting Umple assist you for the implementation part appeals to you, note that you will have
+to develop a deeper acquaintance with Umple than Lab 1 was designed to achieve.
+
+2 Specification
+What follows is a specification for a simplified version of Cluedo. Please bear this in mind whenever
+referring to the original manual or other sources. True to life, the specification may be incomplete or
+ambiguous in parts and in such cases you will have to make reasonable assumptions which you should
+then explicitly state in the assignment report.
+
+2.1 Objective
+The game is a murder mystery played by three to six players who move around a board comprising
+nine rooms. The aim is to deduce the murder circumstances, i.e., who the murderer was, what weapon
+they used and in which room they committed the murder.
+The Cluedo board consists of nine rooms laid out in a circular fashion. The centre space (the “Cellar”)
+is inaccessible to players.
+
+2.2 Board
+The board is divided into a grid of 24x25 squares of which some are not accessible and some (those
+within rooms) may optionally be treated as a single location.
+Players move on this grid and the prototype does not need to honour the fact that rooms are technically
+not divided by grid cells in the original game. The prototype furthermore does not need to account
+for the “secret passages” (stairwell connections which connect rooms in opposite corners).
+There are six starting squares located at the perimeter of the board. Each starting square indicates
+which character starts at that position.
+
+2.3 Characters
+There are six characters, one of which (randomly selected for each game play) is the murderer:
+• Miss Scarlett
+• Colonel Mustard
+• Mrs. White
+• Mr. Green
+• Mrs. Peacock
+• Professor Plum
+Each player assumes the role of one of these characters. If there are less then six players, some of the
+characters will be unused
+
+2.4 Weapons
+There are six weapons in the game, one of which is the murder weapon:
+• Candlestick
+• Dagger
+• Lead Pipe
+• Revolver
+• Rope
+• Spanner
+Each weapon is initially placed in a room chosen at random, such that no two weapons are in the
+same room.2.6 User Interface
+Implement an object-oriented program for playing the Cluedo game. The game interface should be
+simple and must be text-based. Only text-based input and output is permitted, i.e., all input/output
+must occur via System.in and System.out.
+1. The program begins by asking how many players wish to participate.
+2. At the start of each turn, the program rolls the two dice to determine the move distance of the
+player who’s turn it is by using the sum of the dice values. The current player then moves their
+token to a desired spot on the grid.
+3. Once a player has moved, they are presented with the option of making a suggestion or an
+accusation. All rules of the games must be enforced at all times, e.g., only suggestions that
+involve the room the current player is in, should be permitted.
+4. The program then repeats steps 2–4 for the next player, unless a player has won or all players
+have been eliminated from making accusations.
+
+2.5 Rules
+Every character, weapon and room is represented by a card in the game. Before the game starts, one
+character, one weapon, and one room card are blindly selected at random. This selection represents
+the murder circumstances, i.e., the “solution” that players need to figure out during game play. The
+respective cards go into an envelope to be hidden from view.
+The remaining weapon, room and character cards are then combined into one stack, shuffled and then
+dealt facedown evenly to players. Some players may end up with more cards than others.
+3
+Players then take it in turns to roll two dice and move their character token a corresponding number
+(sum of the dice values) of squares. Diagonal movement is not allowed and no space may be used
+twice during one turn. When a player enters a room, they do not need to use any remaining moves
+they have left. They may then hypothesise about the murder circumstances by making a suggestion
+which comprises the room they are in, a character and a weapon. If the character and weapon named
+in the suggestion are not in that room yet, they are now moved into the room.
+When a suggestion is made, each player, in a clockwise fashion, starting from the current player,
+attempts to refute the suggestion. A suggestion is refuted by producing a card that matches one of
+the named murder circumstances (as such a card cannot be in the solution envelope). A refutation
+card is only shown to the player that made the suggestion. If a player has multiple refutation cards,
+it is their choice which one they pick. If no player can produce a refutation, the named murder
+circumstances are a potential solution candidate that may or may not be used to make an accusation
+later on (by any player).
+An accusation comprises a character, a weapon, and a room (which can be any room, not just the
+one the player making the accusation may be in). If the accusation made by a player exactly matches
+the actual murder circumstances (only the accusing player is allowed to see the solution) the player
+wins, otherwise the player is excluded from making further suggestions or accusations. This means
+the player will continue to refute suggestions by others but cannot win the game anymore.
+
+2.6 User Interface
+Implement an object-oriented program for playing the Cluedo game. The game interface should be
+simple and must be text-based. Only text-based input and output is permitted, i.e., all input/output
+must occur via System.in and System.out.
+1. The program begins by asking how many players wish to participate.
+2. At the start of each turn, the program rolls the two dice to determine the move distance of the
+player who’s turn it is by using the sum of the dice values. The current player then moves their
+token to a desired spot on the grid.
+3. Once a player has moved, they are presented with the option of making a suggestion or an
+accusation. All rules of the games must be enforced at all times, e.g., only suggestions that
+involve the room the current player is in, should be permitted.
+4. The program then repeats steps 2–4 for the next player, unless a player has won or all players
+have been eliminated from making accusations.
