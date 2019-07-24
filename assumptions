@@ -13,3 +13,20 @@ We are treating squares within rooms as multiple multiple squares, not a single 
 5) Specifications states that the "prototype does not need to honour the fact that rooms are technically not 
 divided by grid cells in the original game". We are treating rooms as being divided into grid cells.
 
+6) Specifications don't speficially state what are the rooms that make up the 9 rooms. We will assume the 9 rooms
+are the ones displayed in the .pdf picture:
+- kitchen, ball room, conservatory, dining room, lounge, hall, billiard room, library, and study.
+
+7) Entrances to rooms are not specified, thus we will assume entrances are based on the entrances on the .pdf handout image.
+
+8) When another player refutes the current player's suggestion, it is not stated how the refutation card is shown privately to the current player.
+We assume that every player is playing on the same device.
+....
+
+9) When the current player makes a false accusation that does not match the envelope, how this is shown privately 
+only to the accusing player is not specified.
+We assume that every player is playing on the same device.
+....
+
+10) Specifications don't tell us how to specifically lay out the board. We assume that the board looks like the image
+described on the pdf handout.
