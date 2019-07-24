@@ -26,9 +26,9 @@ murder circumstances:
 squares:
 - these represents the individual units on the board grid
 - can be accessible (rooms, corridoors, entrances), can be not accessible (cellar, player token, weapon token)
-- can hold a player token
-- can hold a weapon token
-- has a type (room, corridor, cellar)
+- can contain a player token
+- can contain a weapon token
+- has a type (room, corridor, cellar, entrance)
 - has a unqiue pair of coordinates (x, y)
 
 cellar:
