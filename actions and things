@@ -1,27 +1,113 @@
-Actions:
-- determineNumPlayers (Game asks how many players 3-6)
-- makeEnvelope (Game creates Triple for envelope)
-- dealCards (Game randomly deals Cards clockwise to all Board's Players)
-- rollDice (Player rolls 2 dice, return sum of dice)
-- move (player moves on Board, can't move diagonally, can't move same space, can't move to occupied space)
-- turn (Board's Player rollDice, Moves, then makeAccusation (if matching envelope, player wins & gameover otherwise, player loses & put in cellar, they can still refute) or makeSuggestion (if in room, return refuted) or endTurn))
-- lost (Player's makeAccusation is false)
-- gameover (Game's Board has Player accusation that matches envelope or everyone's in the cellar)
-- enterRoom (Player enters a Room, can choose to stop moving)
-- makeSuggestion (Player makes suggestion Triple, board relocate(Triple{Character, Weapon} to Triple{Room}))
-- refuted (Board's Players (except current Player) gives a card that matches {character, weapon, room}, else give no card)
-- makeAccusation (Player makes accusation Triple)
-- relocate (Board moves weapon and Player{Character}).
-
 Things:
-- Players (3-6 on the Board)
-- Board (24x25 of Squares)
-- Rooms (9 rooms on the Board)
-- murderer circumstances (murderer, weapon, room)
-- cellar (inaccessible to players in middle of board)
-- squares (24x25 that make up board, 6 starting squares)
-- Characters (6 character Cards)
-- Weapons (6 placed on Board, initially 1 to each Room on startup)
-- Cards (An individual (Character, Weapon, Room)).
-- Triple (A set of {Character, Weapon, Room}).
-- Prop (Character token, or Weapon token)
+
+game:
+- has an envelope of the murder circumstances
+- has a collection of cards: weapons, characters, and rooms
+- has a board
+- has a collection of 3-6 players
+- has a collection of players playing the game
+- has a collection of player who have lost the game
+
+players:
+- has 1 unique character token
+- has a collection of cards
+
+board:
+- has 3-6 player tokens
+- has a grid of 24x25 sqaures
+- has 9 rooms laid out in circular fashion
+- has a centerspace (cellar) inaccessible to player tokens
+- has 6 starting squares for player tokens located at perimeter of board
+- has a collection of entrances which a player can move into and out of rooms.
+
+murder circumstances:
+- 3 cards {character, weapon, room}
+
+squares:
+- these represents the individual units on the board grid
+- can be accessible (rooms, corridoors, entrances), can be not accessible (cellar, player token, weapon token)
+- can hold a player token
+- can hold a weapon token
+- has a type (room, corridor, cellar)
+- has a unqiue pair of coordinates (x, y)
+
+cellar:
+- this is the centre space on the board
+- inaccessible to players
+
+characters:
+- Miss Scarlett, Colonel Mustard, Mrs. White, Mr. Green, Mrs. Peacock, Professor Plum
+
+murder weapons:
+- Candlestick, Dagger, Lead Pipe, Revolver, Rope, Spanner 
+
+rooms:
+- kitchen, ball room, conservatory, dining room, lounge, hall, billiard room, library, and study.
+
+tokens:
+- a character token, which the player moves around the board
+- a weapon token, which can be moved around the board
+
+card: 
+- represents every character, weapon, and room
+
+============================================================================================================================================
+Actions:
+
+get number of players:
+- game asks how many players there are
+
+move:
+- player tokens can move around the board
+- diagonal movement not allowed, and moving to a space visited before on the current move is not allowed
+- player tokens can move into and out of rooms via an entrance
+- upon entering a room, player can decide whether to use up any remaining moves
+
+layout rooms:
+- board lays out 9 rooms in a circular fashion
+
+layout starting players:
+- board lays out 6 starting squares for player tokens
+
+select murderer:
+- game randomly selects a character murderer 
+
+select character token:
+- players can select a character token to represent themselves on the board
+
+distribute weapons:
+- board initially places weapon tokens in each room chosen at random, such that no two weapons tokens are in the same room
+
+make envelope:
+- game randomly selects {character, weapon, room} card randomly as the murder circumstance.
+- 3 cards are put in an envelope hidden from players.
+
+deal cards:
+- game shuffles its collection of cards, then deals them evenly to players
+
+roll dice:
+- players can roll 2 dice to obtain their sum
+
+turn:
+- game has a turn for each player: roll dice, then move character. Once the character has finished moving the player may:
+- make a suggestion:
+  - every other player tries to refute the suggestion clockwise from the current player.
+  - upon one successful refutation, we end the current players turn.
+- make an accusation:
+  - if accusation matches the envelope, then the player wins
+  - otherwise, the player loses and can no longer make anymore suggestions or accusations (though they can still refute).
+
+make suggestion:
+- player can make a suggestion of the murder circumstance {room, character, weapon}
+- room must be the room player is currently in
+- if character token and weapon token are not in the room, they are moved into the room
+
+refute:
+- player can refute a suggestion {room, character, weapon} by showing privately any one of their card that matches
+- if the player has no cards to refute, they don't show any of their cards
+
+make accusation:
+- player can guess the murder circumstance {room, character, weapon}
+
+gameover:
+- game is finished when a player correctly makes an accusation, or all players have lost from making accusations
