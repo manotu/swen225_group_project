@@ -1,0 +1,95 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue255;\red251\green2\blue7;
+\red0\green0\blue255;\red251\green2\blue7;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c1680\c19835\c100000;\cssrgb\c100000\c14913\c0;
+\cssrgb\c1680\c19835\c100000;\cssrgb\c100000\c14913\c0;\csgray\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww17940\viewh11140\viewkind0
+\deftab720
+\pard\tx2874\pardeftab720\sl280\qc\partightenfactor0
+
+\f0\fs36 \cf2 \expnd0\expndtw0\kerning0
+Tasks\
+\pard\pardeftab720\sl280\partightenfactor0
+
+\fs24 \cf2 \
+\cf3 Blue:\cf2  nouns\
+\cf4 Red:\cf2  verb phrases\
+Any nouns or verb phrases which have not been highlighted, I\'92ve treated them as irrelavent.\
+\
+
+\fs36 1) Outline
+\fs24 \
+
+\fs28 You are to implement a prototype of program allowing people to play a version of the board game Cluedo on a desktop computer. If you have not heard of the game Cluedo before, don\'92t worry, a specification detailing what you need to do is provided and you may always consult the game manual or the Wikipedia description of Cluedo.\
+\
+You will design a solution using CRC cards and UML, and implement a solution using Java. Feel free to use the Umple tool for designing models and generating code. You may fully stay within Umple, or depart from the original Umple ethos of never editing the generated code by instead using the generated code as a starting point for your implementation.\
+\
+Hint: If letting Umple assist you for the implementation part appeals to you, note that you will have to develop a deeper acquaintance with Umple than Lab 1 was designed to achieve.\
+
+\fs24 \
+
+\fs36 2) Specification
+\fs24 \
+
+\fs28 What follows is a specification for a simplified version of Cluedo. Please bear this in mind whenever referring to the original manual or other sources. True to life, the specification may be incomplete or ambiguous in parts and in such cases you will have to make reasonable assumptions which you should then explicitly state in the assignment report.\
+
+\fs24 \
+
+\fs36 2.1) Objective\
+
+\fs28 The \cf5 game\cf2  is a murder mystery played by three to \cf5 six\cf2  \cf5 players\cf2  who \cf6 move around\cf2  a \cf5 board\cf2  comprising \cf5 nine rooms\cf2 . The aim is to deduce the \cf5 murder circumstances\cf2 , i.e., who the \cf5 murderer\cf2  was, what \cf5 weapon\cf2  they used and in which \cf5 room\cf2  they committed the murder. The Cluedo\cf5  board \cf6 consists\cf2  of nine\cf5  rooms\cf6  laid out in a circular fashion\cf2 . The \cf5 centre space (the \'93Cellar\'94)\cf2  is \cf6 inaccessible\cf2  to \cf5 players\cf2 .\
+
+\fs24 \
+
+\fs36 2.2) Board\
+
+\fs28 The \cf5 board\cf2  is \cf6 divided into a \cf5 grid\cf6  of \cf5 24x25 squares\cf2  of which \cf6 some are not accessible\cf2  and some (those within rooms) may optionally be \cf6 treated as a single location\cf2 .\
+\
+\cf5 Players\cf2  \cf6 move\cf2  on this \cf5 grid\cf2  and the prototype does not need to honour the fact that\cf6  \cf5 rooms\cf6  \cf2 are technically not \cf6 divided by grid cells\cf2  in the original game. The prototype furthermore does not need to account for the \'93secret passages\'94 (stairwell connections which connect rooms in opposite corners).\
+\
+There are \cf5 six starting\cf2  \cf5 squares\cf2  \cf6 located at the perimeter of the \cf5 board\cf2 . Each \cf5 starting square\cf2  \cf6 indicates\cf2  which \cf5 character\cf2  \cf6 starts at that \cf5 position\cf2 .\
+
+\fs24 \
+
+\fs36 2.3) Characters\
+
+\fs28 There are \cf5 six characters\cf2 , \cf6 one of which (randomly selected for each game play) \cf2 is the \cf5 murderer\cf2 : \
+\cf5 \'95 Miss Scarlett \'95 Colonel Mustard \'95 Mrs. White \'95 Mr. Green \'95 Mrs. Peacock \'95 Professor Plum.\
+\cf2 \
+Each \cf5 player\cf2  \cf6 assumes the role of one of these \cf5 characters\cf2 . \cf6 If there are less than six \cf5 players\cf6 , some of the \cf5 characters\cf6  will be unused\cf2 .\
+
+\fs24 \
+
+\fs36 2.4) Weapons\
+
+\fs28 There are \cf5 six weapons\cf2  in the game, one of which is the \cf5 murder weapon\cf2 : \'95 \cf5 Candlestick \'95 Dagger \'95 Lead Pipe \'95 Revolver \'95 Rope \'95 Spanner \
+\cf2 \
+Each \cf5 weapon\cf2  is \cf6 initially placed in a \cf5 room\cf6  chosen at random, \cf2 such that \cf6 no two \cf5 weapons\cf6  are in the same \cf5 room\cf6 .\cf2 \
+
+\fs24 \
+
+\fs36 2.5) Rules\
+
+\fs28 \cf5 Every\cf2  \cf5 character\cf2 , \cf5 weapon\cf2  and \cf5 room\cf2  is \cf6 represented\cf2  by a \cf5 card\cf2  in the game. \cf6 Before the \cf5 game\cf6  starts\cf2 , \cf6 one \cf5 character\cf6 , one \cf5 weapon\cf6 , and one \cf5 room\cf6  \cf5 card\cf6  are blindly selected at random\cf2 . This \cf5 selection \cf6 represents\cf2  the \cf5 murder circumstances\cf2 , i.e., the \'93solution\'94 that players need to figure out during game play. The respective \cf5 cards\cf2  go into an \cf5 envelope\cf2  to be \cf6 hidden\cf2  from view.\
+\
+The remaining \cf5 weapon\cf2 , \cf5 room\cf2  and \cf5 character\cf2  \cf5 cards\cf2  are then \cf6 combined\cf2  into one \cf5 stack\cf2 , \cf6 shuffled and then dealt facedown evenly to \cf5 players\cf2 . Some \cf5 players\cf2  may \cf6 end up with more cards than others\cf2 . \cf5 Players\cf2  then take it in \cf5 turns\cf2  to \cf6 roll \cf5 two dice\cf2  and \cf6 move their character \cf5 token\cf2  a corresponding number \cf6 (sum of the dice values)\cf2  of \cf5 squares\cf2 . \cf6 Diagonal movement is not allowed\cf2  and \cf6 no space may be used twice during one turn\cf2 . When a \cf5 player\cf2  \cf6 enters\cf2  a \cf5 room\cf2 , they \cf6 do not need to use any remaining moves they have left\cf2 . They may then hypothesise about the murder circumstances by \cf6 making a \cf5 suggestion\cf2  which comprises the \cf5 room\cf6  \cf2 they are in, a \cf5 character\cf2  and a \cf5 weapon\cf2 . If the \cf5 character\cf2  and \cf5 weapon\cf2  named in the \cf5 suggestion\cf2  are \cf6 not in that room yet, they are now moved into the room\cf2 .\
+\
+When a \cf5 suggestion\cf2  is made, \cf6 \cb7 each \cf5 player\cf6 , in a \cb1 clockwise fashion, starting from the \cf5 current player\cf2 , attempts to \cf6 refute\cf2  the \cf5 suggestion\cf2 . A \cf5 suggestion\cf2  is \cf6 refuted by producing a \cf5 card\cf6  that matches one of the named murder circumstances\cf2  (as such a card cannot be in the solution envelope). A \cf5 refutation card\cf2  is only \cf6 shown\cf2  to the \cf5 player\cf2  that made the \cf5 suggestion\cf2 . If a \cf5 player\cf2  \cf6 has multiple refutation cards, it is their choice which one they pick\cf2 . \cf6 If no \cf5 player\cf6  can produce a \cf5 refutation\cf6 ,\cf2  the named \cf5 murder circumstances \cf2 are a potential \cf5 solution\cf2  \cf5 candidate\cf2  that \cf6 may or may not be used to make an \cf5 accusation\cf2  later on (by any player).\
+\
+An \cf5 accusation\cf2  comprises a \cf5 character\cf2 , a \cf5 weapon\cf2 , and a \cf5 room\cf2  (which can be any room, not just the one the player making the accusation may be in). If the \cf5 accusation\cf2  \cf6 made by a\cf2  \cf5 player\cf2  \cf6 exactly matches the actual \cf5 murder circumstances\cf2  \cf6 (only the accusing \cf5 player\cf6  is allowed to see the solution)\cf2  the \cf5 player\cf2  \cf6 wins\cf2 , \cf6 otherwise the \cf5 player\cf6  is excluded from making further \cf5 suggestions\cf6  or \cf5 accusations\cf2 . This means the \cf5 player\cf2  will \cf6 continue to refute suggestions by others but cannot win the game anymore\cf2 .\
+\
+
+\fs36 2.6) User interface\
+
+\fs28 Implement an object-oriented program for playing the Cluedo game. The \cf5 game interface\cf2  should be simple and must be\cf5  text-based\cf2 . Only text-based input and output is permitted, i.e., all \cf5 input/output\cf2  must \cf6 occur\cf2  via \cf5 System.in\cf2  and \cf5 System.out.\cf2 \
+\
+1. The program \cf6 begins by asking how many \cf5 players\cf2  \cf6 wish to participate\cf2 .\
+\
+2. At the \cf5 start\cf2  of each \cf5 turn\cf2 , the program \cf6 rolls the \cf5 two dice\cf6  to determine\cf2  the \cf5 move distance\cf2  of the \cf5 player\cf2  who\'92s turn it is by \cf6 using the \cf5 sum\cf6  of the \cf5 dice values\cf2 . The current \cf5 player\cf2  then \cf6 moves\cf2  their \cf5 token\cf2  to a desired\cf5  spot\cf2  on the \cf5 grid\cf2 .\
+\
+3. Once a \cf5 player\cf2  has \cf6 moved, they are presented with the \cf5 option\cf6  of making a \cf5 suggestion\cf6  or an \cf5 accusation\cf2 . All rules of the games must be enforced at all times, e.g., only suggestions that involve the room the current player is in, should be permitted.\
+\
+4. The program then \cf6 repeats steps 2\'964 for the next \cf5 player\cf2 , \cf6 unless a \cf5 player\cf6  has \cf5 won\cf6  or \cf5 all players\cf6  have been \cf5 eliminated\cf6  from making accusations\cf2 \
+\
+}
