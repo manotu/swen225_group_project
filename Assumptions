@@ -1,2 +1,15 @@
-1) When a player loses, put them in a cellar so graphically, we can still see who has lost.
-￼2) If there are multiple player moves, e.g. 12, each individual movement is checked by system.in
+1) Specfications do not state what happens to the physical player token on the board when they lose.
+So, we decided when a player loses we put them in a cellar in order to graphically see who has lost.
+
+￼2) Each individual movement from the player token is prompted by System.in, up to the maximum number of movements
+determined by the sum of the dice rolls.
+
+3) At the start of the game, we need a way for players to choose their game characters. 
+We assume that players 1, 2, 3, e.t.c. in sequence choose which character to play.
+
+4) Specifications states that squares "(those within rooms) may optionally be treated as a single location".
+We are treating squares within rooms as multiple multiple squares, not a single location"
+
+5) Specifications states that the "prototype does not need to honour the fact that rooms are technically not 
+divided by grid cells in the original game". We are treating rooms as being divided into grid cells.
+
