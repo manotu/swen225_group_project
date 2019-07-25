@@ -39,8 +39,8 @@ public void setup(){
 
 class Board
 {
-  const int ROWS = 25;
-  const int COLS = 24;
+  const int ROWS = 24;
+  const int COLS = 25;
   1--600 Square board;
   
   public void setup(){
@@ -84,7 +84,7 @@ class Inaccessible
 class Card
 {
   description;
-public boolean equals(){
+public boolean equal(Object o){
  
 }
 }
