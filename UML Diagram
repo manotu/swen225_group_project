@@ -1,0 +1,176 @@
+class Game
+{
+1--1 Board board;
+  1--6 CharacterCard playerCards;
+  1--6 WeaponCard weaponCards;
+  1--9 RoomCard roomCards;
+  1--3..6 Player players;
+  1--6 WeaponToken weaponTokens;
+  1--6 CharacterToken characterTokens;
+  Triple envelope;
+  
+  
+public void setup(){
+
+}
+  public void numPlayers(){
+
+}
+  public void setupPlayerCollection(){
+     
+}
+  public void distributeTokensToPlayers(){
+    
+}
+  public void setMurderCircumstances(){
+    
+}
+  public void distrubuteCards(){
+    
+}
+  public void runGame(){
+     
+}
+  public boolean gameOver(){
+    
+}
+
+}
+
+class Board
+{
+  const int ROWS = 25;
+  const int COLS = 24;
+  1--600 Square board;
+  
+  public void setup(){
+  }
+  public void distributeWeaponTokens() {
+  }
+  public void setupPlayerCharacterTokens(){
+  }
+  public Square getSquare(x, y) {
+  }
+  public void display(){ 
+  }
+}
+
+class Room
+{
+  boolean isEntrance;
+isA Square;
+}
+
+class Square
+{
+  Token token = null;
+  
+  public boolean isOccupied(){   
+  }
+}
+
+class Corridor
+{
+  isA Square;
+}
+
+class Inaccessible
+{
+  isA Square;
+}
+
+
+
+class Card
+{
+  description;
+public boolean equals(){
+ 
+}
+}
+
+class WeaponCard
+{
+  isA Card;
+}
+
+class RoomCard
+{
+  isA Card;
+}
+
+class CharacterCard
+{
+  isA Card;
+}
+
+class Token
+{
+  int x;
+  int y;
+  Board board;
+}
+
+class WeaponToken
+{
+  isA Token;
+  
+  boolean reallocate(int x, int y) {
+  }
+}
+
+class CharacterToken
+{
+  isA Token;
+  
+  boolean moveUp() {
+  }
+  
+  boolean moveDown() {
+  }
+  
+  boolean moveLeft() {
+  }
+  
+  boolean moveRight() {
+  }
+  
+  public boolean validMovement(Square current, Square destination) {
+  }
+}
+
+class Player
+{
+  Token characterToken;
+  1--3..6 Card hand;
+  enum state {
+    playing, won, lost
+}
+   
+public int rollDice(){
+ 
+}
+  
+  public Triple takeTurn(){
+    
+}
+  public Triple makeSuggestion(){
+    
+}
+  public Triple makeAccusation(){
+     
+}
+  public Card makeRefutation(Triple suggestion){
+    // if there are no matching cards in hand with the suggestion, return nothing
+}
+  
+  
+}
+
+class Triple
+{
+  CharacterCard character;
+  RoomCard room;
+  WeaponCard weapon;
+}
+
