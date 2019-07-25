@@ -30,3 +30,7 @@ We assume that every player is playing on the same device.
 
 10) Specifications don't tell us how to specifically lay out the board. We assume that the board looks like the image
 described on the pdf handout.
+
+11) Player has the option to end turn without making an accusation or suggestion.
+
+12) If a player is refuting a suggestion and has a matching card in hand, they must play the card.
