@@ -1,5 +1,5 @@
 1) Specfications do not state what happens to the physical player token on the board when they lose.
-So, we decided when a player loses we put them in a cellar in order to graphically see who has lost.
+So, we decided they can still move, but cannot make accusations or suggestions, only refutations.
 
 ￼2) Each individual movement from the player token is prompted by System.in, up to the maximum number of movements
 determined by the sum of the dice rolls.
