@@ -1,351 +1,237 @@
-============================================================================================
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                                CLUEDO
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-============================================================================================
-
 class Cluedo
 {
-  1-->1 Board board;
-  1-->21 Card cards;
-  1-->3..6 Player players;
-  1-->6 WeaponToken weaponTokens;
-  1-->6 CharacterToken characterTokens;
-  1-->1 Triple envelope;
+  *->1 Board board;
+  *->1 Triple envelope;
+  *->3..6 Player players;
   
-public void restart(){
-
-}
+  public void restart() { }
   
-public void gameOver(){
+  public boolean gameOver() { }
+  
+  public void dealCardsToPlayers(List<Card> cards) { }
+  
+  public List<Card> initialiseCards() { }
+  
+  public void setMurderCircumstances(List<Card> cards) { }
+  
+  public void initialisePlayers() { }
+  
+  public List<CharacterToken> distributeTokensToPlayers(List<CharacterToken> characterTokens) { }
+  
+  public List<CharacterToken> initialisePlayerTokens() { }
+  
+  public List<WeaponToken> initialiseWeaponTokens() { }
+  
+  public void runGame() { }
+  
+  public static boolean queryRestart() { }
+  
+  public static void main(String[] args) { }
+
+  
 }
-
-  public void dealCardsToPlayers(){
-}
-
-  public void initializeCards(){
-}
-
-  public void setMurderCircumstances(){
-}
-
-  public void initializePlayers(){
-}
-
-  public void distributeTokensToPlayers(){
-}
-
-  public void initializeTokens(){
-}
-
-  public boolean runGame(){
-}
-
-}
-
-============================================================================================
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                                BOARD
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-============================================================================================
-
-
 
 class Board
 {
-  const int ROWS = 25;
-  const int COLS = 24;
-  1-->600 Area board;
+    const int ROWS = 25;
+    const int COLS = 24;
   
-  public void loadFile(){
-  }
+    *->600 Tile board;
   
-  public void placeWeaponTokens(List<Token> weaponTokens){
-  }
+  public void setup(List<WeaponToken> weapons, List<CharacterToken> characters) { }
   
-  public void placePlayerTokens(List<CharacterToken> characterTokens) {
-  }
+  public void loadFile() { }
+ 
+  public void placeWeaponTokens(List<WeaponToken> weaponTokens) { }
   
-  public void display(){
-  }
+  public void placePlayerTokens(List<CharacterToken> characterTokens) { } 
   
-  public Area getArea(x, y) {
-  }
+  public void display() { }
+  
+  public Tile getTile(int row, int col) { }
+  
+  public void reallocateTokens(Triple t) { }
+  
+  public Token findToken(Description d) { }
+  
+  public Room findRoom(Description d) { }
+}
+
+abstract class Tile
+{
+  *->12 Token tokens;
+  
+  public Token tokenAt(int row, int col){ }
+  
+  public boolean addToken(Token token) { }
+  
+  public List<Token> getTokens() { }
+  
+  public boolean hasToken(Token t) { }
+  
+  public boolean removeToken(Token token) { }
+  
+   public abstract String symbol();
+  
+  public void print(int row, int col) { }
   
 }
 
-============================================================================================
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                                 AREA
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-============================================================================================
-
-abstract class Area
+class Triple
 {
-  1--> Entrance entrances;
-  1--> Token tokens;
+  *->1 Card weapon;
+  *->1 Card room;
+  *->1 Card character;
   
-  public Token tokenAt(int row, int col){   
-  }
+  public boolean equals(Object o) { }
   
-  public boolean addToken(Token token){
-  }
+  public boolean containsCard(Card c) { }
   
-  public List<Token> getTokens(){
-  }
+  public Card getWeapon() { }
   
-  public boolean removeToken(Token token){
-  }
+  public Card getRoom() { }
   
-  public List<Entrance> getEntrances(){
-  }
+  public Card getCharacter() { }
   
-  public boolean addEntrance(Entrance entrance){
-  }
+  public void print() { }
+}
+
+class Player
+{
+  *->1 CharacterToken characterToken;
+  *-3..6 Card hand;
+  *->1 State state;
+  *->1 Board board;
+  public enum State { }
+  public enum TurnType{ }
   
-  public Entrance entranceAt(int row, int col) {
-  }
+  public void setCharacterToken(CharacterToken c) { }
+  
+  public void addToHand(Card card) { }
+  
+  public int rollDice() { }
+  
+  public void moveToken(int moves) { }
+  
+  public TurnType startTurn() { }
+  
+  public void printHand() { }
+  
+  public TurnType getTurnType() { }
+  
+  public boolean canSuggest() { }
+  
+  public boolean canRefute(Triple triple) { }
+  
+  public Card refute(Triple triple) { }
+  
+  public Triple makeSuggestion() { }
+  
+  public Triple makeAccusation() { }
+  
+  public Triple getTriple() { }
+  
+  public Card getCard(List<Description> types, Description.Type type) { }
+  
+  public CharacterToken getCharacterToken() { }
+  
+  public State getState() { }
+  
+  public void setState(State s) { }
+  
+}
+
+class Token
+{
+  int row; int col;
+  *->1 Description description;
+  
+  public void reallocate(Room r, Board b) { }
+  
+  public void setRow(int r) { }
+  
+  public void setCol(int c) { }
+  
+  public int getRow() { }
+  
+  public int getCol() { }
   
   public abstract String symbol();
   
-  public String print(int row, int col){
-  }
+  public Description getDescription() { }
 }
 
-============================================================================================
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                              CORRIDOR
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-============================================================================================
-
-
-class Corridor
+class CharacterToken
 {
-  isA Area;
+  isA Token;
+  *->0..12 visitedPositions;
   
-  public String symbol(){
-  }
-}
-
-============================================================================================
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                             INACCESSIBLE
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-============================================================================================
-
-
-class Inaccessible
-{
-  isA Area;
+  public void clearVisitedPositions() { }
   
-  public String symbol(){
+  public void addVisitedPosition(int row, int col) { }
+  
+  public String symbol() { }
+  
+  public boolean moveUp(Board board) { }
+  
+  public boolean moveDown(Board board) { }
+  
+  public boolean moveLeft(Board board) { }
+  
+  public boolean moveRight(Board board) { }
+  
+  public boolean isValidMove(int destRow, int destCol, Board board) { }
+  
+  public boolean cannotMove(Board board) { }
+  
+  private class Position {
+  int row; int col;
+    
+    public boolean equals(Object o) { }
+    
+    public int hashCode() { }
+  
+  
   }
+  
 }
 
-============================================================================================
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                                ROOM
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-============================================================================================
+enum Description{
+  
+  public boolean isAWeapon() { }
+  
+  public boolean isACharacter() { }
+  
+  public boolean isARoom() { }
+  
+  public enum Type { }
+}
 
+class Corridor{
+  isA Tile;
+  public String symbol() { }
+}
 
-class Room
+class Room{
+  isA Tile;
+  *->1 Description description;
+  
+  public String symbol() { }
+  
+  public Description getDescription() { }
+  
+}
+
+class Wall
 {
-   1-->1 Description description;
-   isA Area;
-   
-   public String symbol() {
-   }
-
-   public Description getDescription() {
-   }
+  isA Tile;
+  
+  public String symbol() { }
+  
 }
 
-============================================================================================
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                             DESCRIPTION
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-============================================================================================
-
-enum Desciption{
-//Enums for weapons
-//Enums for Characters
-//Enums for Rooms
-
-1-->1 Type type;
- 
-public boolean isAWeapon() {
-}
-
-public boolean isACharacter() {
-}
-
-public boolean isARoom() {
-}
-============================================================================================
-                                                TYPE
-============================================================================================
-enum Type{
-//ENUM, 3 categories
-//WEAPON, CHARACTER, ROOM
-}
-
-}
-
-
-============================================================================================
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                               CARD
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-============================================================================================
-class Card{
-
-1-->1 Description description;
-
-}
-
-
-============================================================================================
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                             TOKEN
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-============================================================================================
-
-public class Token{
-
-int row, col;
-1--> Description description;
-
-public void reallocate(Room room) {
-}
-
-public void setRow(int row) {
-}
-
-public void setCol(int col) {
-}
-
-public int getRow() {
-}
-
-public int getCol() {
-}
-
-public String symbol() {
-}
-}
-
-============================================================================================
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                         CHARACTERTOKEN
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-============================================================================================
-
-public class CharacterToken{
-
-isA Token;
-
-1-->* Position visitedPositions;
-
-public void clearVisitedPositions(){
-}
-
-public void addVisitedPosition(int row, int col){
-}
-
-public String symbol() {
-}
-
-public boolean moveUp(Board board) {
-}
-
-public boolean moveDown(Board board) {
-}
-
-public boolean moveLeft(Board board) {
-}
-
-public boolean moveRight(Board board) {
-}
-
-public boolean isValidMove(int destRow, int destCol, Board board) {
-}
-
-public boolean cannotMove(Board board) {
-}
-
-============================================================================================
-                                          POSITION
-============================================================================================
-class Position{
-int row, col;
-
-public boolean equals(Object o) {
-}
-
-public int hashCode() {
-}
-
-}
-
-}
-
-============================================================================================
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                           TRIPLE
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-============================================================================================
-
-public class Triple{
-
-1-->1 Card weapon;
-1-->1 Card room;
-1-->1 Card character;
-}
-
-============================================================================================
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                                            PLAYER
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-============================================================================================
-
-public class Player{
-
-1-->1 CharacterToken characterToken;
-1-->3..6 Card hand;
-1-->1 State state;
-1-->1 Board board;
-
-============================================================================================
-                                           STATE
-============================================================================================
-public enum State{
-//3 player states, playing, lost, won.
-}
-
-public void setCharacterToken(CharacterToken characterToken){
-}
-
-public void addToHand(Card card){
-}
-
-public int rollDice(){
-}
-
-public void moveToken(int moves) {
-}
-
-public Triple takeTurn() {
-}
-
-public Triple makeSuggestion() {
-}
-
-public Card makeRefutation(Triple triple){
-}
-
-public State getState(){
-}
-
-
+class WeaponToken{
+  isA Token;
+  
+  public String symbol() { }
 }
