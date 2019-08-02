@@ -88,11 +88,10 @@ class Tile
 
 class Triple
 {
-  *->1 Card weapon;
-  *->1 Card room;
-  *->1 Card character;
-  
-  public boolean equals(Object o) { }
+  Card weapon;
+Card room;
+Card character;
+public boolean equals(Object o) { }
   
   public boolean containsCard(Card c) { }
   
@@ -205,7 +204,9 @@ class CharacterToken
   
 }
 
-enum Description {
+class Description {
+  
+  enum desc{
   // Weapons
     CANDLESTICK, DAGGER, LEAD_PIPE, REVOLVER, ROPE, SPANNER,
 
@@ -214,6 +215,7 @@ enum Description {
 
     // Rooms
     KITCHEN, BALLROOM, CONSERVATORY, DINING_ROOM, BILLIARD_ROOM, LIBRARY, LOUNGE, HALL, STUDY;
+  }
 
     Type type;
 
@@ -237,11 +239,10 @@ class Corridor{
 
 class Room{
   isA Tile;
-  *->1 Description description;
+  Description description;
   
   public String symbol() { }
   
-  public Description getDescription() { }
   
 }
 
